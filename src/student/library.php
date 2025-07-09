@@ -7,9 +7,9 @@ ini_set('display_errors', 1);
 
 // Database connection
 $servername = "localhost";
-$username = "u406807013_guidancehub";
-$password = "GuidanceHub@2025";
-$dbname = "u406807013_guidancehub";
+$username = "root";
+$password = "";
+$dbname = "guidancehub";
 
 // Create connection
 $con = new mysqli($servername, $username, $password, $dbname);
@@ -124,11 +124,11 @@ if (isset($_GET['logout'])) {
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden flex-col items-start w-full px-6 py-4 space-y-4 blue-dark md:hidden">
-        <a href="dashboard.php" class="block text-white font-medium py-2 px-3 rounded hover:bg-blue-900 transition">Dashboard</a>
-        <a href="library.php" class="block text-white font-medium py-2 px-3 rounded hover:bg-blue-900 transition">Library</a>
+    <div id="mobile-menu" class="flex-col items-start hidden w-full px-6 py-4 space-y-4 blue-dark md:hidden">
+        <a href="dashboard.php" class="block px-3 py-2 font-medium text-white transition rounded hover:bg-blue-900">Dashboard</a>
+        <a href="library.php" class="block px-3 py-2 font-medium text-white transition rounded hover:bg-blue-900">Library</a>
         <a href="?logout=true" class="block text-white font-semibold text-center py-2 px-4 rounded bg-[#618dc2] hover:bg-blue-600 transition">
-            <i class="fa-solid fa-right-from-bracket mr-2"></i> Logout
+            <i class="mr-2 fa-solid fa-right-from-bracket"></i> Logout
         </a>
     </div>
 </header>
@@ -140,7 +140,7 @@ if (isset($_GET['logout'])) {
             <!-- Search Bar -->
             <div class="flex justify-center">
                 <form method="GET" class="flex mb-4">
-                    <input type="text" name="search" placeholder="Search Resource Material..." class="border-gray-300 w-40 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <input type="text" name="search" placeholder="Search Resource Material..." class="w-40 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                     <button type="submit" class="px-4 py-2 ml-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600">Search</button>
                 </form> 
             </div>
@@ -192,7 +192,7 @@ $con->close();
 
 <!--FOOTER-->
 <footer class="w-full blue-dark">
-    <div class="w-full max-w-screen-xl p-4 py-6 mx-auto lg:py-8 text-white">
+    <div class="w-full max-w-screen-xl p-4 py-6 mx-auto text-white lg:py-8">
         <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
                 <a href="https://flowbite.com/" class="flex items-center">
@@ -200,7 +200,7 @@ $con->close();
                     <span class="font-bold tracking-wide text-white md:text-2xl">GuidanceHub</span>
                 </a>
             </div>
-            <div class="grid grid-cols-2 text-white gap-8 sm:gap-6 sm:grid-cols-3">
+            <div class="grid grid-cols-2 gap-8 text-white sm:gap-6 sm:grid-cols-3">
                 <div>
                     <h2 class="mb-6 text-sm font-semibold uppercase">Resources</h2>
                     <ul class="font-medium">
@@ -236,7 +236,7 @@ $con->close();
                 </div>
             </div>
         </div>
-        <div class="sm:flex sm:items-center text-white sm:justify-between">
+        <div class="text-white sm:flex sm:items-center sm:justify-between">
             <span class="text-sm sm:text-center">© 2025 Group 8 | IV-AINS. All Rights Reserved.
             </span>
         </div>

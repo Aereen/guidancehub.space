@@ -8,9 +8,9 @@ ini_set('display_errors', 1);
 
 // Database connection
 $servername = "localhost";
-$username = "u406807013_guidancehub";
-$password = "GuidanceHub@2025";
-$dbname = "u406807013_guidancehub";
+$username = "root";
+$password = "";
+$dbname = "guidancehub";
 
 // Create connection
 $con = new mysqli($servername, $username, $password, $dbname);
@@ -251,11 +251,11 @@ $con->close();
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden flex-col items-start w-full px-6 py-4 space-y-4 blue-dark md:hidden">
-        <a href="dashboard.php" class="block text-white font-medium py-2 px-3 rounded hover:bg-blue-900 transition">Dashboard</a>
-        <a href="library.php" class="block text-white font-medium py-2 px-3 rounded hover:bg-blue-900 transition">Library</a>
+    <div id="mobile-menu" class="flex-col items-start hidden w-full px-6 py-4 space-y-4 blue-dark md:hidden">
+        <a href="dashboard.php" class="block px-3 py-2 font-medium text-white transition rounded hover:bg-blue-900">Dashboard</a>
+        <a href="library.php" class="block px-3 py-2 font-medium text-white transition rounded hover:bg-blue-900">Library</a>
         <a href="?logout=true" class="block text-white font-semibold text-center py-2 px-4 rounded bg-[#618dc2] hover:bg-blue-600 transition">
-            <i class="fa-solid fa-right-from-bracket mr-2"></i> Logout
+            <i class="mr-2 fa-solid fa-right-from-bracket"></i> Logout
         </a>
     </div>
 </header>
@@ -363,21 +363,21 @@ $con->close();
     <!-- Right Column: Profile & Calendar -->
     <div class="space-y-4">
         <!-- PROFILE CARD -->
-        <div class="w-full max-w-xl mx-auto p-6 bg-white border border-gray-200 rounded-xl shadow-md">
-            <h4 class="text-2xl font-bold text-center text-gray-800 mb-4">Profile</h4>
+        <div class="w-full max-w-xl p-6 mx-auto bg-white border border-gray-200 shadow-md rounded-xl">
+            <h4 class="mb-4 text-2xl font-bold text-center text-gray-800">Profile</h4>
             
             <div class="flex flex-col items-start space-y-4">
                 <?php if (!empty($individual_inventory) && is_array($individual_inventory)): ?>
                     <div class="w-full">
-                        <div class="flex justify-between border-b py-2">
+                        <div class="flex justify-between py-2 border-b">
                             <span class="font-medium text-gray-700">Name:</span>
                             <span class="text-gray-900"><?= htmlspecialchars($individual_inventory['student_name'] ?? '') ?></span>
                         </div>
-                        <div class="flex justify-between border-b py-2">
+                        <div class="flex justify-between py-2 border-b">
                             <span class="font-medium text-gray-700">UMak Email:</span>
                             <span class="text-gray-900"><?= htmlspecialchars($individual_inventory['student_email'] ?? '') ?></span>
                         </div>
-                        <div class="flex justify-between border-b py-2">
+                        <div class="flex justify-between py-2 border-b">
                             <span class="font-medium text-gray-700">College/Institute:</span>
                             <span class="text-gray-900"><?= htmlspecialchars($individual_inventory['college_dept'] ?? '') ?></span>
                         </div>

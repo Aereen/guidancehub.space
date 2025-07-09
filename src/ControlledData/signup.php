@@ -7,9 +7,9 @@ ini_set('display_errors', 1);
 
 // Database connection
 $servername = "localhost";
-$username = "u406807013_guidancehub";
-$password = "GuidanceHub@2025";
-$dbname = "u406807013_guidancehub";
+$username = "root";
+$password = "";
+$dbname = "guidancehub";
 
 // Create connection
 $con = new mysqli($servername, $username, $password, $dbname);
@@ -161,7 +161,7 @@ $con->close();
                         <input type="email" id="email" name="email" class="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" required>
                     </div>
 
-                    <div class="mb-4 flex flex-col md:flex-row md:items-center md:space-x-6">
+                    <div class="flex flex-col mb-4 md:flex-row md:items-center md:space-x-6">
                         <!-- ID Number -->
                         <div class="w-full md:w-1/2">
                             <label for="id_number" class="block text-sm font-medium text-gray-700">ID Number</label>
@@ -171,7 +171,7 @@ $con->close();
                         <!-- Role Selection -->
                         <div class="w-full md:w-1/2">
                             <label class="block text-sm font-medium text-gray-700">Role</label>
-                            <div class="flex text-center space-x-4 mt-1">
+                            <div class="flex mt-1 space-x-4 text-center">
                                 <div>
                                     <input type="radio" id="counselor" name="role" value="Counselor" class="mr-2" required>
                                     <label for="counselor" class="text-sm font-medium text-gray-700">Counselor</label>

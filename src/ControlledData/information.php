@@ -14,9 +14,9 @@ require 'fpdf/fpdf.php'; // make sure this path matches your project
 
 // Database connection
 $servername = "localhost";
-$username = "u406807013_guidancehub";
-$password = "GuidanceHub@2025";
-$dbname = "u406807013_guidancehub";
+$username = "root";
+$password = "";
+$dbname = "guidancehub";
 
 // DB Connection
 $con = new mysqli($servername, $username, $password, $dbname);
@@ -192,7 +192,7 @@ $con->close();
 <div class="relative flex items-center justify-center mb-6">
     <div class="float-left text-xl font-semibold">
         <a href="/src/student/dashboard.php">
-            <i class="fa-solid fa-arrow-left mx-5"></i>
+            <i class="mx-5 fa-solid fa-arrow-left"></i>
         </a>
     </div>
     <h2 class="text-2xl font-bold text-center">INDIVIDUAL INVENTORY FORM</h2>

@@ -12,9 +12,9 @@ require 'phpmailer/src/SMTP.php';
 
 // Database connection
 $servername = "localhost";
-$username = "u406807013_guidancehub";
-$password = "GuidanceHub@2025";
-$dbname = "u406807013_guidancehub";
+$username = "root";
+$password = "";
+$dbname = "guidancehub";
 
 // Create DB connection
 $con = new mysqli($servername, $username, $password, $dbname);

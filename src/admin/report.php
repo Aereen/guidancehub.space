@@ -7,9 +7,9 @@ ini_set('display_errors', 1);
 
 // Database connection
 $servername = "localhost";
-$username = "u406807013_guidancehub";
-$password = "GuidanceHub@2025";
-$dbname = "u406807013_guidancehub";
+$username = "root";
+$password = "";
+$dbname = "guidancehub";
 
 // Create connection
 $con = new mysqli($servername, $username, $password, $dbname);

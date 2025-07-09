@@ -7,9 +7,9 @@ ini_set('display_errors', 1);
 
 // Database connection
 $servername = "localhost";
-$username = "u406807013_guidancehub";
-$password = "GuidanceHub@2025";
-$dbname = "u406807013_guidancehub";
+$username = "root";
+$password = "";
+$dbname = "guidancehub";
 
 // Create connection
 $con = new mysqli($servername, $username, $password, $dbname);
@@ -206,7 +206,7 @@ $con->close();
                                     <td class='p-3 border'>
                                         <form action='' method='POST'>
                                             <input type='hidden' name='student_email' value='{$row['student_email']}'>
-                                            <select name='status' class='p-2 border align-middle rounded'>
+                                            <select name='status' class='p-2 align-middle border rounded'>
                                                 <option value='Pending' " . ($row['status'] == 'Pending' ? 'selected' : '') . ">Pending</option>
                                                 <option value='Scheduled' " . ($row['status'] == 'Scheduled' ? 'selected' : '') . ">Scheduled</option>
                                                 <option value='Completed' " . ($row['status'] == 'Completed' ? 'selected' : '') . ">Completed</option>
