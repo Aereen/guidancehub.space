@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"  rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/95c10202b4.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="./output.css" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body::-webkit-scrollbar {
+            width: 15px; }
+        body::-webkit-scrollbar-track {
+            background: #f1f1f1; }
+        body::-webkit-scrollbar-thumb {
+            background: #888; }
+        body::-webkit-scrollbar-thumb:hover {
+            background: #555; }
+        .marcellus-regular {
+            font-family: "Marcellus", serif;
+            font-style: normal;
+            letter-spacing: 1px; }
+        .blue-light:hover {
+            background-color: #618dc2;
+            color: white; }
+    </style>
+</head>
+<body class="flex bg-gray-100">
+
+<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform bg-white border-r border-gray-300 sm:translate-x-0" aria-label="Sidebar">
+    <div class="flex items-center justify-center h-16 m-3">
+        <a href="dashboard.php" class="flex items-center">
+            <img src="./src/images/UMAK-CGCS-logo.png" class="h-10 mr-3" alt="GuidanceHub Logo">
+            <span class="text-xl font-semibold text-center marcellus-regular">GuidanceHub<br><sub>Student Portal</sub></span>
+        </a>
+    </div>
+    <hr class="my-2 border-gray-300">
+    <div class="h-full px-3 pb-4 mt-3 overflow-y-auto">
+        <ul class="m-3 space-y-2 font-medium">
+            <li><a href="dashboard.php" class="flex items-center p-2 rounded-lg blue-light group"><i class="w-5 h-5 text-gray-500 group-hover:text-blue-950 fa-solid fa-house"></i><span class="ms-3">Dashboard</span></a></li>
+            <li><a href="library.php" class="flex items-center p-2 rounded-lg blue-light group"><i class="w-5 h-5 text-gray-500 group-hover:text-blue-950 fa-solid fa-calendar-check"></i><span class="ms-3">Library</span></a></li>
+            <li><a href="profile.php" class="flex items-center p-2 rounded-lg blue-light group"><i class="w-5 h-5 text-gray-500 group-hover:text-blue-950 fa-solid fa-paper-plane"></i><span class="ms-3">Profile</span></a></li>
+            <li><a href="messages.php" class="flex items-center p-2 rounded-lg blue-light group"><i class="w-5 h-5 text-gray-500 group-hover:text-blue-950 fa-solid fa-file-lines"></i><span class="ms-3">Messages</span></a></li>
+            <li><a href="?logout=true" class="flex items-center p-2 rounded-lg blue-light group"><i class="w-5 h-5 text-gray-500 group-hover:text-blue-950 fa-solid fa-right-from-bracket"></i><span class="ms-3">Log Out</span></a></li>
+        </ul>
+    </div>
+</aside>
+
+<main class="flex-grow p-6 ml-64">
+<div class="container mx-auto">
+    <h1 class="mb-4 text-3xl font-bold">Welcome, <?php echo "Welcome, " . $_SESSION['name'] . "!<br>" ?></h1>
+
+    <div class="grid grid-cols-1 gap-4 p-2 mt-2 mb-5 lg:grid-cols-3">
+        <div class="space-y-4 lg:col-span-2">
+            <section class="p-5 bg-white border-2 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold"><i class="w-5 h-5 mx-2 text-blue-950 fa-regular fa-calendar-days"></i> Reminders</h2>
+
+            <div class="m-2">
+            <!-- Reminder Message for Incomplete Individual Form -->
+                <?php if (!$hasAnswered): ?>
+                    <div class="p-4 m-2 bg-yellow-100 border-l-4 border-yellow-500 rounded">
+                        <p class="font-semibold text-yellow-700">⚠️ Reminder: You have not yet completed the form.</p>
+                        <a href="/src/ControlledData/information.php" class="inline-block px-4 py-2 mt-3 text-white bg-blue-500 rounded hover:bg-blue-600">
+                            Complete Form
+                        </a>
+                    </div>
+                <?php endif; ?>
+
+            <!-- Reminder Message for Refferal Counseling -->
+                <?php if (!$isReferred): ?>
+                    <div class="p-4 m-2 bg-yellow-100 border-l-4 border-yellow-500 rounded">
+                        <p class="font-semibold text-yellow-700">⚠️ Reminder: You have been referred to the counseling office. 
+                                                                    <br> Redirect to Counseling Appointment to shcedule your preferred counseling time and date.</p>
+                        <a href="/src/ControlledData/appointment.php" class="inline-block px-4 py-2 mt-3 text-white bg-blue-500 rounded hover:bg-blue-600">
+                            Schedule Counseling
+                        </a>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <p class="mt-2 text-gray-700">Here are your upcoming appointments and assessments:</p>
+            <div class="grid grid-cols-1 gap-4 mt-2 sm:grid-cols-2">
+
+                <!-- UPCOMING SESSIONS -->
+                <div class="p-6 bg-white rounded-lg shadow-md">
+                    <h2 class="mb-3 text-xl font-bold text-gray-700 underline">Upcoming Appointments</h2>
+                    <ul class="space-y-3">
+                        <?php if (!empty($appointments)): ?>
+                            <?php foreach ($appointments as $appointment): ?>
+                                <li class="flex flex-col space-y-1 text-gray-800">
+                                    <span class="font-medium">First Date & Time:</span>
+                                    <span><?= htmlspecialchars($appointment['first_date']) ?> | <?= htmlspecialchars($appointment['first_time']) ?></span>
+                                    <span class="font-medium">Second Date & Time:</span>
+                                    <span><?= htmlspecialchars($appointment['second_date']) ?> | <?= htmlspecialchars($appointment['second_time']) ?></span>
+                                    <span class="font-medium">Status:</span>
+                                    <span><?= htmlspecialchars($appointment['status']) ?: 'Pending'; ?></span>
+                                </li>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <li class="text-gray-600">No Appointments...</li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+
+                <!-- PENDING ASSESSMENTS -->
+                <div class="p-6 bg-white rounded-lg shadow-md">
+                    <h2 class="mb-3 text-xl font-bold text-gray-700 underline">Scheduled Assessments</h2>
+                    <ul class="space-y-3">
+                        <?php if (!empty($assessments)): ?>
+                            <?php foreach ($assessments as $assessment): ?>
+                                <li class="flex flex-col space-y-1 text-gray-800">
+                                    <span class="font-medium">Assessment Date:</span>
+                                    <span><?= htmlspecialchars($assessment['schedule_date']) ?> | <?= htmlspecialchars($assessment['schedule_time']) ?></span>
+                                    <span class="font-medium">Status:</span>
+                                    <span><?= htmlspecialchars($assessment['status']) ?: 'Pending'; ?></span>
+                                </li>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <li class="text-gray-600">No Assessments...</li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        </div>
+    </div>
+
+</div>
+</main>
+
+</body>
+</html>
